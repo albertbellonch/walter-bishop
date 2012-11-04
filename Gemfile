@@ -9,6 +9,9 @@ gem 'sqlite3'
 # Frontend
 gem 'jquery-rails'
 
+# APIs and external services
+gem 'icalendar'
+
 ## Groups
 
 # Assets
