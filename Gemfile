@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 
 # DB
-gem 'sqlite3'
+gem 'mysql2'
 
 # Frontend
 gem 'jquery-rails'
@@ -19,4 +19,13 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+end
+
+# Test
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'fuubar'
 end
