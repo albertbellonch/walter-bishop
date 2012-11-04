@@ -14,7 +14,7 @@ module WalterBishop
         # Create the episode
         Episode.create :title => title, :tv_series => tv_series.join(" "), :season => season, :number => number,
           :start_time => event.dtstart, :end_time => event.dtend
-      end.select { |episode| !!episode }
+      end.select { |episode| !!episode.id }
     end
 
     private
