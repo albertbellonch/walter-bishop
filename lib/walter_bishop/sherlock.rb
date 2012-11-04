@@ -14,17 +14,14 @@ module WalterBishop
         # Create the episode
         Episode.create :title => title, :tv_series => tv_series.join(" "), :season => season, :number => number,
           :start_time => event.dtstart, :end_time => event.dtend
-      end
+      end.select { |episode| !!episode }
     end
 
     private
 
     def self.next_episodes
       limit = Time.now + RANGE
-
-      calendar.events.select do |event|
-        event.dtstart <= limit
-      end
+      calendar.events.select { |event| event.dtstart <= limit }
     end
 
     def self.calendar
