@@ -9,6 +9,9 @@ gem 'mysql2'
 # Frontend
 gem 'jquery-rails'
 
+# Scheduling
+gem 'whenever'
+
 # Utils
 gem 'nokogiri'
 
