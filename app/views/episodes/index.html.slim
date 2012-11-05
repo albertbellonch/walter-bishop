@@ -1,5 +1,25 @@
 h1.page-header List of episodes
 
-ul
+table.table.table-hover
+  tr
+    th TV Series
+    th Number
+    th Emission
+    th Status
+
   - @episodes.each do |episode|
-    li= episode.identifier
+    tr
+      td= episode.tv_series
+      td= episode.complete_number
+      td
+        - now = Time.now
+        - if now < episode.start_time
+          ' In
+          = distance_of_time_in_words(now, episode.start_time)
+        - else
+          - if now < episode.end_time
+            | In emission
+          - else
+            =' distance_of_time_in_words(episode.end_time, now).capitalize
+            | ago
+      td X
