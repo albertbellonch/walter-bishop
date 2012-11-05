@@ -9,6 +9,8 @@ gem 'mysql2'
 # Frontend
 gem 'jquery-rails'
 gem 'slim-rails'
+gem 'compass-rails'
+gem 'compass_twitter_bootstrap'
 
 # Scheduling
 gem 'sidekiq'
