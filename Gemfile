@@ -10,6 +10,7 @@ gem 'mysql2'
 gem 'jquery-rails'
 
 # Scheduling
+gem 'sidekiq'
 gem 'whenever'
 
 # Utils
