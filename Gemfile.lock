@@ -86,6 +86,8 @@ GEM
     mysql2 (0.3.11)
     nokogiri (1.5.5)
     polyglot (0.3.3)
+    quiet_assets (1.0.1)
+      railties (~> 3.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -187,6 +189,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   nokogiri
+  quiet_assets
   rails (= 3.2.8)
   rspec-rails
   sass-rails (~> 3.2.3)

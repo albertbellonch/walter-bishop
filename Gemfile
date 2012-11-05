@@ -17,6 +17,7 @@ gem 'sidekiq'
 gem 'whenever'
 
 # Utils
+gem 'quiet_assets'
 gem 'nokogiri'
 
 # APIs and external services
