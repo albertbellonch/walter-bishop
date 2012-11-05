@@ -9,6 +9,13 @@ gem 'mysql2'
 # Frontend
 gem 'jquery-rails'
 
+# Scheduling
+gem 'sidekiq'
+gem 'whenever'
+
+# Utils
+gem 'nokogiri'
+
 # APIs and external services
 gem 'icalendar'
 

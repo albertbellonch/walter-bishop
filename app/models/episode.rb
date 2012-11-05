@@ -6,6 +6,10 @@ class Episode < ActiveRecord::Base
   validates_presence_of :tv_series, :title, :season, :number, :start_time, :end_time, :identifier
   validates_uniqueness_of :identifier
 
+  def identifier_for_pirate_bay
+    "#{tv_series} s#{season.to_s.rjust(2, '0')}e#{number.to_s.rjust(2, '0')} 720p"
+  end
+
   private
 
   def set_identifier
