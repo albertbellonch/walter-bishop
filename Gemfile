@@ -8,12 +8,16 @@ gem 'mysql2'
 
 # Frontend
 gem 'jquery-rails'
+gem 'slim-rails'
+gem 'compass-rails'
+gem 'compass_twitter_bootstrap'
 
 # Scheduling
 gem 'sidekiq'
 gem 'whenever'
 
 # Utils
+gem 'quiet_assets'
 gem 'nokogiri'
 
 # APIs and external services
@@ -26,6 +30,11 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+end
+
+# Development do
+group :development do
+  gem 'thin'
 end
 
 # Test
