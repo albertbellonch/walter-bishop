@@ -14,6 +14,7 @@ gem 'compass_twitter_bootstrap'
 
 # Scheduling
 gem 'sidekiq'
+gem 'sinatra', :require => nil
 gem 'whenever'
 
 # Utils
