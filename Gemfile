@@ -28,6 +28,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+# Development do
+group :development do
+  gem 'thin'
+end
+
 # Test
 group :test do
   gem 'rspec-rails'
