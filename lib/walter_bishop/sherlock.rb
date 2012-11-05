@@ -17,7 +17,7 @@ module WalterBishop
 
         if episode.id.present?
           # Schedule the torrent download
-          GetTorrentForEpisodeWorker.perform_at(event.end_time + 6.hours, episode.id)
+          GetTorrentForEpisodeWorker.perform_at(episode.end_time + 6.hours, episode.id)
 
           # Return episode
           episode
