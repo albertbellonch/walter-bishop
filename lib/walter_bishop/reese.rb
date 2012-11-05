@@ -10,7 +10,7 @@ module WalterBishop
       document = Nokogiri::HTML(open(pirate_bay_url))
       results = document.css('#searchResult tr')[1..-1]
 
-      return unless results.any? # try again in a few hours
+      return false unless results.any? # try again in a few hours
 
       # Get the torrent
       results_data = results.map do |result|
@@ -25,7 +25,13 @@ module WalterBishop
       # Get the torrent URL
       result_document = Nokogiri::HTML(open(result_url))
       torrent_link = result_document.css('#details .download').first.css('a').first
-      torrent_link.attributes["href"].content
+      torrent_url = torrent_link.attributes["href"].content
+
+      # Update the episode
+      episode.update_attribute(:torrent_url, torrent_url)
+
+      # Return
+      true
     end
   end
 end
