@@ -8,6 +8,7 @@ gem 'mysql2'
 
 # Frontend
 gem 'jquery-rails'
+gem 'slim-rails'
 
 # Scheduling
 gem 'sidekiq'
