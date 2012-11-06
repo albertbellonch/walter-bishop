@@ -5,7 +5,7 @@ class GetTorrentForEpisodeWorker
     episode = episode.find(episode_id)
 
     if WalterBishop::Reese.get_torrent(episode)
-      # hand it to Tyrion
+      WalterBisshop::Tyrion.enqueue_torrent(episode)
     else
       GetTorrentForEpisodeWorker.perform_in(2.hours, episode_id)
     end

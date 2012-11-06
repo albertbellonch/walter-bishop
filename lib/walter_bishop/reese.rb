@@ -12,7 +12,7 @@ module WalterBishop
       document = Nokogiri::HTML(open(pirate_bay_url))
       results = document.css('#searchResult tr')[1..-1]
 
-      return false unless results.any? # try again in a few hours
+      return false unless results.present? && results.any? # try again in a few hours
 
       # Get the torrent
       results_data = results.map do |result|
