@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104200600) do
+ActiveRecord::Schema.define(:version => 20121105233722) do
 
   create_table "episodes", :force => true do |t|
     t.string   "tv_series"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(:version => 20121104200600) do
     t.integer  "number"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "identifier"
+    t.string   "torrent_url"
   end
 
 end
