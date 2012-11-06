@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'nokogiri'
 require 'open-uri'
 
@@ -23,7 +25,9 @@ module WalterBishop
       result_url = "http://thepiratebay.se#{result[:url]}"
 
       # Get the torrent URL
-      result_document = Nokogiri::HTML(open(result_url))
+      result_url.gsub!("[", "%5B")
+      result_url.gsub!("]", "%5D")
+      result_document = Nokogiri::HTML(open(URI.escape(result_url)))
       torrent_link = result_document.css('#details .download').first.css('a').first
       torrent_url = torrent_link.attributes["href"].content
 
