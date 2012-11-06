@@ -2,7 +2,7 @@ class GetTorrentForEpisodeWorker
   include Sidekiq::Worker
 
   def perform(episode_id)
-    episode = episode.find(episode_id)
+    episode = Episode.find(episode_id)
 
     if WalterBishop::Reese.get_torrent(episode)
       WalterBisshop::Tyrion.enqueue_torrent(episode)
