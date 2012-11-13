@@ -29,6 +29,12 @@ def create_season_dir(tv_series_path, season)
   this_season_dir
 end
 
+# Do nothing if empty
+if Dir[ORIGIN_PATH + "/*"].empty?
+  puts "Nothing to do!"
+  exit
+end
+
 # Mount Time Capsule if not mounted
 action_with_feedback 'Mounting Time Capsule' do
   unless File.exists?(DESTINY_PATH)
