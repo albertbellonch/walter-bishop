@@ -24,6 +24,12 @@ gem 'nokogiri'
 # APIs and external services
 gem 'icalendar'
 
+# Deployment
+gem 'capistrano'
+gem 'capistrano-ext'
+gem 'capistrano_colors', :require => false
+gem 'rvm-capistrano'
+
 ## Groups
 
 # Assets
