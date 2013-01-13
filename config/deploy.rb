@@ -28,3 +28,4 @@ default_run_options[:pty] = true
 
 # Callbacks
 after "deploy:update_code", "deploy:cleanup"
+after "deploy:update_code", "deploy:symlink_config"
