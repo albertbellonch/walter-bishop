@@ -1,0 +1,5 @@
+test:
+  adapter: mysql2
+  database: walter_bishop
+  username: travis
+  encoding: utf8

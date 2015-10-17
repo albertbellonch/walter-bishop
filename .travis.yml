@@ -1,2 +1,8 @@
+language: ruby
 rvm:
   - "2.2.3"
+before_script:
+  - mv config/database_travis.yml config/database.yml
+  - mysql -e 'create database walter_bishop'
+  - bundle exec rake db:migrate
+script: bundle exec rspec spec
