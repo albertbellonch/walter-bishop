@@ -4,6 +4,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
+require 'sidekiq/testing'
 
 RSpec.configure do |config|
   # Mock
@@ -15,8 +16,11 @@ RSpec.configure do |config|
   # Additional helpers
   config.include(FactoryGirl::Syntax::Methods)
 
-  # Clean database
   config.after(:each) do
+    # Clean database
     DatabaseCleaner.clean
+
+    # Fake Sidekiq
+    Sidekiq::Testing.fake!
   end
 end
