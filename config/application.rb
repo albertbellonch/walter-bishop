@@ -22,5 +22,10 @@ module WalterBishop
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Add WalterBishop modules to autoload paths
+    config.autoload_paths += [
+      "#{config.root}/lib"
+    ]
   end
 end

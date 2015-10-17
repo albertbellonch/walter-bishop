@@ -41,6 +41,16 @@ describe Episode do
     end
   end
 
+  describe "#to_s" do
+    before do
+      allow(subject).to receive(:identifier) { 'Lost 1x01' }
+    end
+
+    it "should be .identifier" do
+      expect(subject.to_s).to eq('Lost 1x01')
+    end
+  end
+
   describe "#identifier_for_pirate_bay" do
     context "after saving" do
       before do

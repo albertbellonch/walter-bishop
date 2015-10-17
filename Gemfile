@@ -7,6 +7,13 @@ gem 'rails-api'
 # Storage
 gem 'mysql2', '~> 0.3.18'
 
+# Background
+gem 'sidekiq'
+gem 'sidetiq'
+
+# Tools
+gem 'icalendar'
+
 # Groups
 group :development do
   gem 'thin'
