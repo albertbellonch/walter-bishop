@@ -41,6 +41,32 @@ describe Episode do
     end
   end
 
+  describe ".status" do
+    context "after saving" do
+      before { subject.save }
+
+      it "should be :upcoming" do
+        expect(subject.status).to eq(:upcoming)
+      end
+
+      context "then starting downloading" do
+        before { subject.downloading! }
+
+        it "should be :downloading" do
+          expect(subject.status).to eq(:downloading)
+        end
+
+        context "and then finishing it" do
+          before { subject.ready! }
+
+          it "should be :ready" do
+            expect(subject.status).to eq(:ready)
+          end
+        end
+      end
+    end
+  end
+
   describe "#to_s" do
     before do
       allow(subject).to receive(:identifier) { 'Lost 1x01' }

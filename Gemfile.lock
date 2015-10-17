@@ -37,6 +37,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    baudelaire (0.1.0)
+      activerecord
     builder (3.2.2)
     celluloid (0.17.2)
       celluloid-essentials
@@ -170,6 +172,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  baudelaire
   database_cleaner
   factory_girl_rails
   icalendar

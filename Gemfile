@@ -13,6 +13,7 @@ gem 'sidetiq'
 
 # Tools
 gem 'icalendar'
+gem 'baudelaire'
 
 # Groups
 group :development do

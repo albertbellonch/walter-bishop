@@ -1,9 +1,12 @@
 class Episode < ActiveRecord::Base
+  symbolize :status
+
   validates_presence_of :show, :title, :season, :number,
     :starts_at, :ends_at
   validates_uniqueness_of :identifier
 
   before_validation :set_identifier
+  before_create :set_upcoming_status
   after_create :enqueue_torrent_download
 
   scope :oldest_first, -> { order(arel_table[:starts_at].asc) }
@@ -19,12 +22,23 @@ class Episode < ActiveRecord::Base
     "#{show} s#{season.to_s.rjust(2, '0')}e#{number.to_s.rjust(2, '0')} 720p"
   end
 
+  %i{ downloading ready }.each do |status|
+    define_method "#{status}!" do
+      self.status = status
+      save!
+    end
+  end
+
   private
 
   def set_identifier
     return unless show.present? && season.present? && number.present?
 
     self.identifier = "#{show} #{season}x#{number.to_s.rjust(2, '0')}"
+  end
+
+  def set_upcoming_status
+    self.status = :upcoming
   end
 
   def enqueue_torrent_download
