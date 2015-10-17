@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20121105233722) do
+ActiveRecord::Schema.define(version: 20151017160917) do
 
   create_table "episodes", force: :cascade do |t|
-    t.string   "tv_series",   limit: 255
+    t.string   "show",        limit: 255
     t.string   "title",       limit: 255
     t.integer  "season",      limit: 4
     t.integer  "number",      limit: 4
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "identifier",  limit: 255

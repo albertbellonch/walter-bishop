@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :episode do
-    tv_series "Fringe"
+    show "Fringe"
     title "The day JJ Abrams lost it"
     season 4
     number 1
-    start_time Time.new
-    end_time (Time.new + 30.minutes)
+    starts_at Time.new
+    ends_at (Time.new + 30.minutes)
   end
 end

@@ -4,17 +4,17 @@ describe Episode do
   subject { build :episode }
 
   it { is_expected.to be_valid }
-  %i{ tv_series title season number start_time end_time }.each do |attr|
+  %i{ show title season number starts_at ends_at }.each do |attr|
     it { is_expected.to validate_presence_of(attr) }
   end
 
   describe "uniqueness" do
     context "when there is an exact episode already" do
       before do
-        create :episode, tv_series: "Dexter",
+        create :episode, show: "Dexter",
           season: 1, number: 4
 
-        subject.tv_series = "Dexter"
+        subject.show = "Dexter"
         subject.season = 1
         subject.number = 4
       end
@@ -25,10 +25,10 @@ describe Episode do
     end
   end
 
-  describe "identifier" do
+  describe ".identifier" do
     context "after saving" do
       before do
-        subject.tv_series = 'American Horror Story'
+        subject.show = 'American Horror Story'
         subject.season = 5
         subject.number = 2
 
@@ -37,6 +37,23 @@ describe Episode do
 
       it "should be set" do
         expect(subject.identifier).to eq('American Horror Story 5x02')
+      end
+    end
+  end
+
+  describe "#identifier_for_pirate_bay" do
+    context "after saving" do
+      before do
+        subject.show = 'American Horror Story'
+        subject.season = 5
+        subject.number = 2
+
+        subject.save
+      end
+
+      it "should be set" do
+        expect(subject.identifier_for_pirate_bay).
+          to eq('American Horror Story s05e02 720p')
       end
     end
   end
