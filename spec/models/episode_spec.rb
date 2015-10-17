@@ -51,7 +51,7 @@ describe Episode do
     end
   end
 
-  describe "#identifier_for_pirate_bay" do
+  describe "#term_for_torrent_site" do
     context "after saving" do
       before do
         subject.show = 'American Horror Story'
@@ -62,7 +62,7 @@ describe Episode do
       end
 
       it "should be set" do
-        expect(subject.identifier_for_pirate_bay).
+        expect(subject.term_for_torrent_site).
           to eq('American Horror Story s05e02 720p')
       end
     end

@@ -1,28 +1,28 @@
-# encoding: UTF-8
-
 require 'nokogiri'
 require 'open-uri'
 
 module WalterBishop
   class Reese
-    def self.get_torrent(episode)
-      # Get the results page
-      term = episode.identifier_for_pirate_bay
-      pirate_bay_url = URI.escape "http://thepiratebay.se/search/#{term}/0/99/0"
-      document = Nokogiri::HTML(open(pirate_bay_url))
-      results = document.css('#searchResult tr')[1..-1]
+    def self.torrent_url_for(search_term)
+      # Prepare search
+      prepared_search_term = search_term.split(' ').map(&:downcase).join('+')
+      torrent_site_url = "https://pirateproxy.tf/s/?q=#{prepared_search_term}&page=0&orderby=99"
+      torrent_site_uri = URI.escape(torrent_site_url)
 
-      return false unless results.present? && results.any? # try again in a few hours
+      # Retreive results
+      document = Nokogiri::HTML(open(torrent_site_url))
+      results = document.css('#searchResult tr')[1..-1]
+      return unless results.present? && results.any?
 
       # Get the torrent
       results_data = results.map do |result|
         {
-          :url => result.css('td')[1].css('a')[0].attributes["href"].content,
-          :lv => result.css('td')[2].content.to_i
+          url: result.css('td')[1].css('a')[0].attributes["href"].content,
+          lv: result.css('td')[2].content.to_i
         }
       end
       result = results_data.sort { |a,b| b[:lv] <=> a[:lv] }.first
-      result_url = "http://thepiratebay.se#{result[:url]}"
+      result_url = "https://pirateproxy.tf#{result[:url]}"
 
       # Get the torrent URL
       result_url.gsub!("[", "%5B")
@@ -31,11 +31,8 @@ module WalterBishop
       torrent_link = result_document.css('#details .download').first.css('a').first
       torrent_url = torrent_link.attributes["href"].content
 
-      # Update the episode
-      episode.update_attribute(:torrent_url, torrent_url)
-
       # Return
-      true
+      torrent_url
     end
   end
 end

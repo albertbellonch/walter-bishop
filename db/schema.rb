@@ -11,19 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017160917) do
+ActiveRecord::Schema.define(version: 20151017182717) do
 
   create_table "episodes", force: :cascade do |t|
-    t.string   "show",        limit: 255
-    t.string   "title",       limit: 255
-    t.integer  "season",      limit: 4
-    t.integer  "number",      limit: 4
+    t.string   "show",       limit: 255
+    t.string   "title",      limit: 255
+    t.integer  "season",     limit: 4
+    t.integer  "number",     limit: 4
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "identifier",  limit: 255
-    t.string   "torrent_url", limit: 255
+    t.string   "identifier", limit: 255
   end
 
 end

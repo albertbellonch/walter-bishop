@@ -1,9 +1,10 @@
 class Episode < ActiveRecord::Base
-  before_validation :set_identifier
-
   validates_presence_of :show, :title, :season, :number,
     :starts_at, :ends_at
   validates_uniqueness_of :identifier
+
+  before_validation :set_identifier
+  after_create :enqueue_torrent_download
 
   scope :oldest_first, -> { order(arel_table[:starts_at].asc) }
   scope :newest_first, -> { order(arel_table[:starts_at].desc) }
@@ -14,7 +15,7 @@ class Episode < ActiveRecord::Base
     identifier
   end
 
-  def identifier_for_pirate_bay
+  def term_for_torrent_site
     "#{show} s#{season.to_s.rjust(2, '0')}e#{number.to_s.rjust(2, '0')} 720p"
   end
 
@@ -24,6 +25,10 @@ class Episode < ActiveRecord::Base
     return unless show.present? && season.present? && number.present?
 
     self.identifier = "#{show} #{season}x#{number.to_s.rjust(2, '0')}"
+  end
+
+  def enqueue_torrent_download
+    Episode::TorrentDownloadWorker.enqueue_at(start_at + 6.hours, id)
   end
 
   class << self
