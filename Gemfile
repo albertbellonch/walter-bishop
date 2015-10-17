@@ -15,5 +15,8 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'spring-commands-rspec'
   gem 'factory_girl_rails'
+  gem 'shoulda-matchers', require: false
+  gem 'database_cleaner'
 end
