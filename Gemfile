@@ -1,54 +1,19 @@
 source 'https://rubygems.org'
 
 # Rails
-gem 'rails', '3.2.11'
+gem 'rails', '4.2.4'
+gem 'rails-api'
 
-# DB
-gem 'mysql2'
+# Storage
+gem 'mysql2', '~> 0.3.18'
 
-# Frontend
-gem 'jquery-rails'
-gem 'slim-rails'
-gem 'compass-rails'
-gem 'compass_twitter_bootstrap'
-
-# Scheduling
-gem 'sidekiq'
-gem 'sinatra', :require => nil
-gem 'whenever'
-
-# Utils
-gem 'quiet_assets'
-gem 'nokogiri'
-
-# APIs and external services
-gem 'icalendar'
-
-# Deployment
-gem 'capistrano'
-gem 'capistrano-ext'
-gem 'capistrano_colors', :require => false
-gem 'rvm-capistrano'
-
-## Groups
-
-# Assets
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-end
-
-# Development do
+# Groups
 group :development do
   gem 'thin'
+  gem 'spring'
 end
 
-# Test
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
-  gem 'database_cleaner'
-  gem 'fuubar'
 end

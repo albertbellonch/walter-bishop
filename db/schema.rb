@@ -9,21 +9,21 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121105233722) do
+ActiveRecord::Schema.define(version: 20121105233722) do
 
-  create_table "episodes", :force => true do |t|
-    t.string   "tv_series"
-    t.string   "title"
-    t.integer  "season"
-    t.integer  "number"
+  create_table "episodes", force: :cascade do |t|
+    t.string   "tv_series",   limit: 255
+    t.string   "title",       limit: 255
+    t.integer  "season",      limit: 4
+    t.integer  "number",      limit: 4
     t.datetime "start_time"
     t.datetime "end_time"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "identifier"
-    t.string   "torrent_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "identifier",  limit: 255
+    t.string   "torrent_url", limit: 255
   end
 
 end
