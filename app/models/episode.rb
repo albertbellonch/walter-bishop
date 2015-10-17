@@ -28,7 +28,7 @@ class Episode < ActiveRecord::Base
   end
 
   def enqueue_torrent_download
-    Episode::TorrentDownloadWorker.enqueue_at(start_at + 6.hours, id)
+    Episode::TorrentDownloadWorker.enqueue_at(starts_at + 6.hours, id)
   end
 
   class << self
