@@ -1,6 +1,7 @@
 # Walter Bishop
 
 A madly erratic classifier for TV Series
+![Travis CI](https://travis-ci.org/albertbellonch/walter_bishop.svg?branch=master)
 
 ## Components
 
