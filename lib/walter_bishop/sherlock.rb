@@ -3,7 +3,7 @@ require 'open-uri'
 module WalterBishop
   class Sherlock
     class << self
-      RANGE = 7.days
+      RANGE = 3.months
 
       def upcoming_episodes
         limit = Time.now + RANGE
