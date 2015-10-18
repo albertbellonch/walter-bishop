@@ -61,7 +61,8 @@ class Episode < ActiveRecord::Base
 
       create title: title, show: show.join(' '),
         season: season, number: number,
-        starts_at: event.dtstart, ends_at: event.dtend
+        starts_at: event.dtstart, ends_at: event.dtend,
+        description: event.description
     end
   end
 end
