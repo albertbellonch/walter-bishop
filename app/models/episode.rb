@@ -9,6 +9,8 @@ class Episode < ActiveRecord::Base
   before_create :set_upcoming_status
   after_create :enqueue_torrent_download
 
+  belongs_to :show
+
   scope :oldest_first, -> { order(arel_table[:starts_at].asc) }
   scope :newest_first, -> { order(arel_table[:starts_at].desc) }
 
@@ -56,10 +58,12 @@ class Episode < ActiveRecord::Base
 
     def create_from_event!(event)
       info, title = event.summary.split("-").map(&:strip)
-      *show, identifier = info.split(" ")
+      *show_words, identifier = info.split(" ")
       season, number = identifier.split("x")
 
-      create title: title, show: show.join(' '),
+      show = Show.find_or_create_by(name: show_words.join(' '))
+
+      create title: title, show: show,
         season: season, number: number,
         starts_at: event.dtstart, ends_at: event.dtend,
         description: event.description

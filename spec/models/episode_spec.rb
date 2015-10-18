@@ -11,10 +11,11 @@ describe Episode do
   describe "uniqueness" do
     context "when there is an exact episode already" do
       before do
-        create :episode, show: "Dexter",
+        dexter_show = build :show, name: 'Dexter'
+        create :episode, show: dexter_show,
           season: 1, number: 4
 
-        subject.show = "Dexter"
+        subject.show = dexter_show
         subject.season = 1
         subject.number = 4
       end
@@ -28,7 +29,7 @@ describe Episode do
   describe ".identifier" do
     context "after saving" do
       before do
-        subject.show = 'American Horror Story'
+        subject.show = build :show, name: 'American Horror Story'
         subject.season = 5
         subject.number = 2
 
@@ -80,7 +81,7 @@ describe Episode do
   describe "#term_for_torrent_site" do
     context "after saving" do
       before do
-        subject.show = 'American Horror Story'
+        subject.show = build :show, name: 'American Horror Story'
         subject.season = 5
         subject.number = 2
 

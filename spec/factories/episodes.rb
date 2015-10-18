@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :episode do
-    show "Fringe"
+    show
     title "The day JJ Abrams lost it"
     season 4
     number 1

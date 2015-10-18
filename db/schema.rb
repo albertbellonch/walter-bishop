@@ -11,10 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018141057) do
+ActiveRecord::Schema.define(version: 20151018184451) do
 
   create_table "episodes", force: :cascade do |t|
-    t.string   "show",        limit: 255
     t.string   "title",       limit: 255
     t.integer  "season",      limit: 4
     t.integer  "number",      limit: 4
@@ -25,6 +24,13 @@ ActiveRecord::Schema.define(version: 20151018141057) do
     t.string   "identifier",  limit: 255
     t.string   "status",      limit: 255
     t.text     "description", limit: 65535
+    t.integer  "show_id",     limit: 4
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end
