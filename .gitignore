@@ -18,3 +18,4 @@
 
 # Ignore database config
 config/database.yml
+config/secrets.yml

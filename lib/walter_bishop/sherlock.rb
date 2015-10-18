@@ -12,7 +12,8 @@ module WalterBishop
 
       def calendar
         @calendar ||= begin
-          calendar_file = open('http://www.pogdesign.co.uk/cat/download_ics/b863d321ce2d2c4ffa6a30c4cb17132a.ics') { |f| f.read }
+          calendar_uri = "http://www.pogdesign.co.uk/cat/download_ics/#{Rails.application.secrets.pogdesign_cat_id}.ics"
+          calendar_file = open(calendar_uri) { |f| f.read }
           calendars = Icalendar.parse(calendar_file)
           calendars.first
         end
