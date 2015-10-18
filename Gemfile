@@ -4,6 +4,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 gem 'rails-api'
 
+# API
+gem 'active_model_serializers'
+gem 'responders'
+
 # Storage
 gem 'mysql2', '~> 0.3.18'
 
