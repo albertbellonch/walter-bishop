@@ -9,7 +9,7 @@ class Episode < ActiveRecord::Base
   before_create :set_upcoming_status
   after_create :enqueue_torrent_download
 
-  belongs_to :show
+  belongs_to :show, dependent: :destroy, counter_cache: true
 
   scope :oldest_first, -> { order(arel_table[:starts_at].asc) }
   scope :newest_first, -> { order(arel_table[:starts_at].desc) }
