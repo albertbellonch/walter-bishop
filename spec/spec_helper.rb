@@ -6,6 +6,8 @@ require 'rspec/rails'
 require 'shoulda/matchers'
 require 'sidekiq/testing'
 
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+
 RSpec.configure do |config|
   # Mock
   config.mock_with :rspec
@@ -15,6 +17,10 @@ RSpec.configure do |config|
 
   # Additional helpers
   config.include(FactoryGirl::Syntax::Methods)
+  config.include(Requests::JsonHelpers, type: :request)
+
+  # Infer type from location
+  config.infer_spec_type_from_file_location!
 
   config.after(:each) do
     # Clean database

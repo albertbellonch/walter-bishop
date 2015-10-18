@@ -1,3 +1,3 @@
 class ShowSerializer < ActiveModel::Serializer
-  attributes :name, :episodes_count
+  attributes :id, :name, :episodes_count
 end

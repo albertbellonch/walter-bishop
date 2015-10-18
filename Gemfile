@@ -21,8 +21,8 @@ gem 'baudelaire'
 
 # Groups
 group :development do
-  gem 'thin'
   gem 'spring'
+  gem 'thin'
 end
 
 group :test do

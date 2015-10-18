@@ -1,4 +1,4 @@
 class EpisodeSerializer < ActiveModel::Serializer
-  attributes :show_id, :title, :season, :number,
-    :starts_at, :ends_at, :status, :description
+  attributes :id, :title, :description, :season, :number,
+    :starts_at, :ends_at, :status, :show_id
 end
