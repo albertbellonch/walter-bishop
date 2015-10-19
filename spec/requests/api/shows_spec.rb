@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe ShowsController do
-  describe "GET shows#index" do
+describe Api::ShowsController do
+  describe "GET api/shows#index" do
     before do
       @dexter, @hannibal, @american_horror_story,
         @fargo = {
@@ -19,7 +19,7 @@ describe ShowsController do
     end
 
     it "should return the shows information in alphabetical order" do
-      get '/shows'
+      get '/api/shows'
 
       expect(response).to be_success
 

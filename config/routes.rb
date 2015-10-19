@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  resources :episodes, only: :index
-  resources :shows, only: :index
+  namespace :api do
+    resources :episodes, only: :index
+    resources :shows, only: :index
+  end
 end

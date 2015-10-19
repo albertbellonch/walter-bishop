@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe EpisodesController do
-  describe "GET episodes#index" do
+describe Api::EpisodesController do
+  describe "GET api/episodes#index" do
     before do
       @dexter_show = create :show, name: 'Dexter'
       @hannibal_show = create :show, name: 'Hannibal'
@@ -18,7 +18,7 @@ describe EpisodesController do
     end
 
     it "should return the episodes information in airing order" do
-      get '/episodes'
+      get '/api/episodes'
 
       expect(response).to be_success
 

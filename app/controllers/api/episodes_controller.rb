@@ -1,4 +1,4 @@
-class EpisodesController < BaseController
+class Api::EpisodesController < API::BaseController
   def index
     @episodes = Episode.all
     @episodes = @episodes.oldest_first
