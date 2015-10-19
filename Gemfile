@@ -14,6 +14,7 @@ gem 'mysql2', '~> 0.3.18'
 # Background
 gem 'sidekiq'
 gem 'sidetiq'
+gem 'sinatra', require: nil
 
 # Tools
 gem 'icalendar'
