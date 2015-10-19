@@ -19,6 +19,9 @@ gem 'sidetiq'
 gem 'icalendar'
 gem 'baudelaire'
 
+# Error tracking
+gem 'rollbar'
+
 # Groups
 group :development do
   gem 'spring'
