@@ -8,6 +8,9 @@ gem 'rails-api'
 gem 'active_model_serializers', '~> 0.10.0.rc2'
 gem 'responders'
 
+# Models
+gem 'baudelaire'
+
 # Storage
 gem 'mysql2', '~> 0.3.18'
 
@@ -16,12 +19,14 @@ gem 'sidekiq'
 gem 'sidetiq'
 gem 'sinatra', require: nil
 
-# Tools
+# APIs
 gem 'icalendar'
-gem 'baudelaire'
 
 # Error tracking
 gem 'rollbar'
+
+# Assets
+gem 'quiet_assets'
 
 # Groups
 group :development do
