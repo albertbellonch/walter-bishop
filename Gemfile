@@ -24,6 +24,16 @@ gem 'rollbar'
 
 # Groups
 group :development do
+  # Deployment
+  gem 'capistrano'
+  gem 'capistrano-rails', '1.1.3'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq'
+  gem 'capistrano3-unicorn'
+  gem 'slackistrano', require: false
+
+  # Tools
   gem 'spring'
   gem 'thin'
 end

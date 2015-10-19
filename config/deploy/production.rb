@@ -1,5 +1,5 @@
 set :branch, "master"
 set :rails_env, "production"
-set :deploy_to, "/var/www/rails/home.bellonch.com"
+set :deploy_to, "/var/www/rails/pi.bellonch.com"
 
-server "home.bellonch.com", :app, :worker, :web, :db, :primary => true
+server "home.bellonch.com", roles: %i{ app db worker }, primary: true

@@ -1,11 +1,8 @@
-load 'deploy'
-load 'config/deploy'
-load 'deploy/assets'
+require 'capistrano/setup'
+require 'capistrano/deploy'
+require 'capistrano/bundler'
+require 'capistrano/rails'
+require 'capistrano/rvm'
+require 'capistrano/sidekiq'
 
-Dir['config/deploy/recipes/*.rb'].each { |plugin| load(plugin) }
-
-require 'capistrano/ext/multistage'
-require "rvm/capistrano"
-require 'capistrano_colors'
-require 'bundler/capistrano'
-require 'sidekiq/capistrano'
+Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }

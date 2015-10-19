@@ -1,31 +1,46 @@
-# RVM
-set :rvm_ruby_string, "1.9.3"
-set :rvm_type, :system
-set :rvm_install_with_sudo, true
+# Require sidekiq, unicorn and rollbar recipes
+require 'capistrano/sidekiq'
+require 'capistrano3/unicorn'
+require 'rollbar/capistrano3'
 
-# Configuration
-set :application, "walter_bishop"
-set :keep_releases, 5
-set :bundle_without, [:development, :test]
+# Application
+set :application, "walter-bishop"
 
-# Stages
-set :stages, %w( production )
-set :default_stage, "production"
-
-# SCM
+# Repo & connection
 set :scm, :git
-set :deploy_via, :remote_cache
-set :repository, "git@github.com:albertbellonch/walter_bishop.git"
+set :repo_url, "git@github.com:albertbellonch/walter-bishop-api.git"
+set :user, 'deployer'
+set :port, 8622
+set :ssh_options, { user: fetch(:user), port: fetch(:port), forward_agent: true }
 
-# Users
-set :use_sudo, false
-_cset :user, "deployer"
+# RVM
+set :rvm_ruby_version, File.open('.ruby-version', 'r').read.chomp("\n")
+set :rvm_type, :system
 
 # Misc
-set :config_files, ['config/database.yml']
-ssh_options[:forward_agent] = true
-default_run_options[:pty] = true
+set :log_level, :info
+set :linked_dirs, ['log', 'public/assets', 'tmp/cache']
+set :keep_releases, 5
+set :format, :pretty
+set :pty, false
 
-# Callbacks
-after "deploy:update_code", "deploy:cleanup"
-after "deploy:update_code", "deploy:symlink_config"
+# Unicorn
+set :unicorn_pid, -> { "#{deploy_to}/shared/pids/unicorn.pid" }
+set :unicorn_roles, :app
+set :unicorn_rack_env, :deployment
+set :unicorn_config_path, -> { "#{deploy_to}/current/config/unicorn/#{fetch(:rails_env)}.rb" }
+
+# Sidekiq & roles
+set :sidekiq_pid, -> { File.join(shared_path, 'pids', 'sidekiq.pid') }
+set :sidekiq_role, :worker
+set :assets_roles, [:web, :app, :worker]
+set :bundle_roles, [:web, :app, :worker]
+
+# Bundler
+set :bundle_binstubs, false
+
+# Rollbar
+#set :rollbar_token, YAML.load_file("config/app.yml")['development']['rollbar']['server_token']
+
+# Hooks
+after "deploy:publishing", "deploy:restart"
