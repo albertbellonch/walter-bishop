@@ -23,28 +23,32 @@ describe ShowsController do
 
       expect(response).to be_success
 
-      shows_json = json['shows']
+      shows_json = json['data']
       expect(shows_json.size).to eq(4)
 
       first_show = shows_json.first
-      expect(first_show['id']).to eq(@american_horror_story.id)
-      expect(first_show['name']).to eq('American Horror Story')
-      expect(first_show['episodes_count']).to eq(2)
+      expect(first_show['id']).to eq(@american_horror_story.id.to_s)
+      expect(first_show['type']).to eq('shows')
+      expect(first_show['attributes']['name']).to eq('American Horror Story')
+      expect(first_show['attributes']['episodes_count']).to eq(2)
 
       second_show = shows_json.second
-      expect(second_show['id']).to eq(@dexter.id)
-      expect(second_show['name']).to eq('Dexter')
-      expect(second_show['episodes_count']).to eq(3)
+      expect(second_show['id']).to eq(@dexter.id.to_s)
+      expect(second_show['type']).to eq('shows')
+      expect(second_show['attributes']['name']).to eq('Dexter')
+      expect(second_show['attributes']['episodes_count']).to eq(3)
 
       third_show = shows_json.third
-      expect(third_show['id']).to eq(@fargo.id)
-      expect(third_show['name']).to eq('Fargo')
-      expect(third_show['episodes_count']).to eq(1)
+      expect(third_show['id']).to eq(@fargo.id.to_s)
+      expect(third_show['type']).to eq('shows')
+      expect(third_show['attributes']['name']).to eq('Fargo')
+      expect(third_show['attributes']['episodes_count']).to eq(1)
 
       fourth_show = shows_json.fourth
-      expect(fourth_show['id']).to eq(@hannibal.id)
-      expect(fourth_show['name']).to eq('Hannibal')
-      expect(fourth_show['episodes_count']).to eq(4)
+      expect(fourth_show['id']).to eq(@hannibal.id.to_s)
+      expect(fourth_show['type']).to eq('shows')
+      expect(fourth_show['attributes']['name']).to eq('Hannibal')
+      expect(fourth_show['attributes']['episodes_count']).to eq(4)
     end
   end
 end
