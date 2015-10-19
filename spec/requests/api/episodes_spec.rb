@@ -35,9 +35,9 @@ describe Api::EpisodesController do
       expect(first_episode['attributes']['title']).to eq('The first episode ever')
       expect(first_episode['attributes']['description']).to eq('D11')
       expect(Time.parse(first_episode['attributes']['starts_at'])).
-        to be_within(1.second).of(4.years.ago)
+        to be_within(3.second).of(4.years.ago)
       expect(Time.parse(first_episode['attributes']['ends_at'])).
-        to be_within(1.second).of(3.years.ago)
+        to be_within(3.second).of(3.years.ago)
 
       second_episode = episodes_json.second
       expect(second_episode['id']).to eq(@dexter_1_2.id.to_s)
@@ -49,9 +49,9 @@ describe Api::EpisodesController do
       expect(second_episode['attributes']['title']).to eq('The second one')
       expect(second_episode['attributes']['description']).to eq('D12')
       expect(Time.parse(second_episode['attributes']['starts_at'])).
-        to be_within(1.second).of(3.years.ago)
+        to be_within(3.second).of(3.years.ago)
       expect(Time.parse(second_episode['attributes']['ends_at'])).
-        to be_within(1.second).of(2.years.ago)
+        to be_within(3.second).of(2.years.ago)
 
       third_episode = episodes_json.third
       expect(third_episode['id']).to eq(@hannibal_3_13.id.to_s)
@@ -63,9 +63,9 @@ describe Api::EpisodesController do
       expect(third_episode['attributes']['title']).to eq('Hannibal Finale')
       expect(third_episode['attributes']['description']).to eq('H313')
       expect(Time.parse(third_episode['attributes']['starts_at'])).
-        to be_within(1.second).of(2.months.ago)
+        to be_within(3.second).of(2.months.ago)
       expect(Time.parse(third_episode['attributes']['ends_at'])).
-        to be_within(1.second).of(1.month.ago)
+        to be_within(3.second).of(1.month.ago)
     end
   end
 end
