@@ -22,13 +22,15 @@ gem 'sinatra', require: nil
 # APIs
 gem 'icalendar'
 
-# Error tracking
-gem 'rollbar'
-
 # Assets
 gem 'quiet_assets'
 
 # Groups
+group :production, :staging do
+  gem 'unicorn'
+  gem 'rollbar'
+end
+
 group :development do
   # Deployment
   gem 'capistrano'

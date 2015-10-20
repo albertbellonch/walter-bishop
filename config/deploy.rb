@@ -19,7 +19,8 @@ set :rvm_type, :system
 
 # Misc
 set :log_level, :info
-set :linked_dirs, ['log', 'public/assets', 'tmp/cache']
+set :linked_files, %w{ database secrets }.map { |name| "config/#{name}.yml" }
+set :linked_dirs, ['log', 'tmp/cache']
 set :keep_releases, 5
 set :format, :pretty
 set :pty, false
