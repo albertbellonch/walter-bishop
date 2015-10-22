@@ -1,3 +1,4 @@
+
 working_directory "/var/www/rails/pi.bellonch.com/current"
 pid "/var/www/rails/pi.bellonch.com/shared/pids/unicorn.pid"
 stderr_path "/var/www/rails/pi.bellonch.com/current/log/unicorn.stderr.log"
@@ -29,7 +30,7 @@ end
 after_fork do |server, worker|
   # Start up the database connection again in the worker
   if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.clear_active_connections!
     ActiveRecord::Base.establish_connection
-    ActiveRecord::Base.verify_active_connections!
   end
 end
