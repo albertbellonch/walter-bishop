@@ -6,7 +6,5 @@ Rails.application.routes.draw do
     resources :shows, only: :index
   end
 
-  namespace :admin do
-    mount Sidekiq::Web => '/sidekiq'
-  end
+  mount Sidekiq::Web => '/admin/sidekiq'
 end
