@@ -1,10 +1,9 @@
-
 working_directory "/var/www/rails/pi.bellonch.com/current"
 pid "/var/www/rails/pi.bellonch.com/shared/pids/unicorn.pid"
 stderr_path "/var/www/rails/pi.bellonch.com/current/log/unicorn.stderr.log"
 stdout_path "/var/www/rails/pi.bellonch.com/current/log/unicorn.stdout.log"
 
-listen "/tmp/unicorn.sock"
+listen "127.0.0.1"
 worker_processes 1
 timeout 120
 
