@@ -3,7 +3,7 @@ pid "/var/www/rails/pi.bellonch.com/shared/pids/unicorn.pid"
 stderr_path "/var/www/rails/pi.bellonch.com/current/log/unicorn.stderr.log"
 stdout_path "/var/www/rails/pi.bellonch.com/current/log/unicorn.stdout.log"
 
-listen "127.0.0.1"
+listen "127.0.0.1:8080"
 worker_processes 1
 timeout 120
 
