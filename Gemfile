@@ -15,7 +15,7 @@ gem 'baudelaire'
 gem 'mysql2', '~> 0.3.18'
 
 # Background
-gem 'sidekiq', '3.4.2'
+gem 'sidekiq', '3.3.4'
 gem 'sidetiq'
 gem 'sinatra', require: nil
 
