@@ -18,6 +18,7 @@ gem 'mysql2', '~> 0.3.18'
 gem 'sidekiq', '3.3.4'
 gem 'sidetiq'
 gem 'sinatra', require: nil
+gem 'rack-protection' # used in config.ru for protection
 
 # APIs
 gem 'icalendar'
