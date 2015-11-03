@@ -40,8 +40,5 @@ set :bundle_roles, [:web, :app, :worker]
 # Bundler
 set :bundle_binstubs, false
 
-# Rollbar
-#set :rollbar_token, YAML.load_file("config/app.yml")['development']['rollbar']['server_token']
-
 # Hooks
 after "deploy:publishing", "deploy:restart"
