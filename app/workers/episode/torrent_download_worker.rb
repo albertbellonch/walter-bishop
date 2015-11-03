@@ -7,7 +7,7 @@ class Episode::TorrentDownloadWorker
       # enqueue downloa
       episode.downloading!
     else
-      perform_in(2.hours, episode_id)
+      self.class.perform_in(2.hours, episode_id)
     end
   end
 end
